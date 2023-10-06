@@ -46,7 +46,7 @@ def strike_algorithm_print(n: int, m: int, days: (int, float, float), extra_info
         print(f'{travelers}, {remaining}')
 
 
-def strike_algorithm(n: int, m: int, days: (int, int, int)):
+def strike_algorithm(n: int, m: int, days: (int, int, int)) -> (int, [(int, int)]):
     """
     Pure return version of the strike_algorithm_print
 
