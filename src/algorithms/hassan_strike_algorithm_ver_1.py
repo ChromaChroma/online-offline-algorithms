@@ -8,6 +8,7 @@ def strike_algorithm(n, m, days, extra_info=False, debug_info=False):
     count = 0
 
     if debug_info:
+        print('------------- Offline Optimal Algorithm -------------')
         print('------------- Start{Generating Day Values} -------------')
     for (seat, flight_cost, hotel_cost) in days:
         price = flight_cost + cumulative_cost
