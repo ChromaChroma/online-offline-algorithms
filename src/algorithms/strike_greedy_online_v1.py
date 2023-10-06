@@ -1,5 +1,5 @@
 def strike_algorithm_print(n: int, m: int, days: (int, float, float), extra_info=False, debug_info=False):
-    """"
+    """
     :param n: Number of people to be sent back
     :param m: Days within all n people should be sent back
     :param days: m long list of tuple with information per day including
@@ -47,7 +47,7 @@ def strike_algorithm_print(n: int, m: int, days: (int, float, float), extra_info
 
 
 def strike_algorithm(n: int, m: int, days: (int, int, int)):
-    """"
+    """
     Pure return version of the strike_algorithm_print
 
     :param n: Number of people to be sent back
