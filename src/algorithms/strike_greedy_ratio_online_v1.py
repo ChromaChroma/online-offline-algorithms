@@ -1,14 +1,3 @@
-"""
-Improvements to be added:
-
-* If hotel price > flight, send maximum amount
-* If hotel price is, within ratio, slightly lower than flight, send maximum/partial
-
-* Later, alter ratio based on historical data and averages, and compare those with current prices. (with ratio)
-
-"""
-
-
 def strike_algorithm(n: int, m: int, days: (int, int, int), ratio: float = 1) -> (int, [(int, int)]):
     """
     Greedy online algorithm with ratio
