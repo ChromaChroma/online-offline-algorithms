@@ -33,14 +33,18 @@ def strike_algorithm(n, m, days, extra_info=False, debug_info=False):
 
     remaining = n
     cost_tracker = 0
+    people = []
     for i in range(0, m):
         travelers = travel_log[i]
         (seat, flight_cost, hotel_cost) = days[i]
         remaining = remaining - travelers
-        cost_tracker = cost_tracker + (travelers * flight_cost) + (hotel_cost * remaining)
+        cost_tracker += (travelers * flight_cost) + (hotel_cost * remaining)
+        people.append((travelers, remaining))
         if (extra_info):
             print(f'travelers: {travelers}, loungers: {remaining};\n'
                   f'travel cost: {travelers * flight_cost}, hotel cost: {hotel_cost * remaining};\n'
                   f'cumulative cost this far: {cost_tracker}\n')
         else:
             print(f'{travelers}, {remaining}')
+
+    return cost_tracker, people
