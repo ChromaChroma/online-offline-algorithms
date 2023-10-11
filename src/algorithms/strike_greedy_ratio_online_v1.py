@@ -21,9 +21,7 @@ def strike_algorithm(n: int, m: int, days: (int, int, int), ratio: float = 1) ->
 
     :returns: tuple (total_cost, list of people sent and remaining each day)
     """
-    total_cost = 0
-    cumulative_cost = 0
-    day_number = 0
+    total_cost, cumulative_cost, day_number = 0,0,0
 
     sent_and_remaining = []
 
