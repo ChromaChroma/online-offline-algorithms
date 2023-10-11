@@ -46,7 +46,7 @@ def strike_algorithm_print(n: int, m: int, days: (int, float, float), extra_info
         print(f'{travelers}, {remaining}')
 
 
-def strike_algorithm(n: int, m: int, days: (int, int, int)) -> (int, [(int, int)]):
+def strike_algorithm(n: int, m: int, days: [(int, int, int)]) -> (int, [(int, int)]):
     """
     Pure return version of the strike_algorithm_print
 
@@ -56,14 +56,14 @@ def strike_algorithm(n: int, m: int, days: (int, int, int)) -> (int, [(int, int)
                 (amount_of_seats, flight_cost, hotel_cost)
     :returns: tuple (total_cost, list of people sent and remaining each day)
     """
-    total_cost, cumulative_cost, day_number = 0,0,0
+    total_cost, cumulative_cost = 0,0
 
     sent_and_remaining = []
 
-    for (seats, flight_cost, hotel_cost) in days:
+    for i, (seats, flight_cost, hotel_cost) in enumerate(days):
         if n == 0:
             # Fill remaining days with (0,0)
-            sent_and_remaining += [(0, 0) for _ in range(1, m - day_number)]
+            sent_and_remaining += [(0, 0) for _ in range(1, m - i)]
             break
         people_sent_back = seats if seats <= n else n
 
@@ -74,6 +74,6 @@ def strike_algorithm(n: int, m: int, days: (int, int, int)) -> (int, [(int, int)
         sent_and_remaining.append((people_sent_back, n))
 
         cumulative_cost += hotel_cost
-        day_number += 1
+
 
     return total_cost, sent_and_remaining

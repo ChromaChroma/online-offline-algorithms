@@ -1,4 +1,4 @@
-def strike_algorithm(n: int, m: int, days: (int, int, int), ratio: float = 1) -> (int, [(int, int)]):
+def strike_algorithm(n: int, m: int, days: [(int, int, int)], ratio: float = 1) -> (int, [(int, int)]):
     """
     Greedy online algorithm with ratio
 
@@ -10,14 +10,14 @@ def strike_algorithm(n: int, m: int, days: (int, int, int), ratio: float = 1) ->
 
     :returns: tuple (total_cost, list of people sent and remaining each day)
     """
-    total_cost, cumulative_cost, day_number = 0,0,0
+    total_cost, cumulative_cost = 0,0
 
     sent_and_remaining = []
 
-    for (seats, flight_cost, hotel_cost) in days:
+    for i, (seats, flight_cost, hotel_cost) in enumerate(days):
         if n == 0:
             # Fill remaining days with (0,0)
-            sent_and_remaining += [(0, 0) for _ in range(1, m - day_number)]
+            sent_and_remaining += [(0, 0) for _ in range(1, m - i)]
             break
 
         if (flight_cost <= hotel_cost) or (flight_cost * ratio <= hotel_cost):
@@ -32,6 +32,5 @@ def strike_algorithm(n: int, m: int, days: (int, int, int), ratio: float = 1) ->
             sent_and_remaining.append((0, n))
 
         cumulative_cost += hotel_cost
-        day_number += 1
 
     return total_cost, sent_and_remaining
