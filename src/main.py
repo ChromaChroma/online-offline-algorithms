@@ -1,6 +1,7 @@
 import algorithms.hassan_strike_algorithm_ver_1 as offline
 import algorithms.strike_greedy_online_v1 as greedy
 import algorithms.strike_greedy_ratio_online_v1 as greedy_ratio
+import algorithms.strike_greedy_ratio_average_online_v1 as greedy_average
 from instance_parser import load_instance
 import matplotlib.pyplot as plt
 import numpy as np
@@ -42,6 +43,10 @@ if __name__ == '__main__':
     plt.axhline(y=opt_total, color='b', linestyle='-', label='Online Ratio')
     # greedy_ratio_results = greedy_ratio.strike_algorithm(*instance, ratio=1)
     # print(greedy_ratio_results)
+
+    (total, people) = greedy_average.strike_algorithm(*instance)
+    print(total)
+    print(people)
 
     plt.legend()
     plt.title("Total price per algorithm (lower = better)")
