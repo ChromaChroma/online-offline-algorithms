@@ -17,7 +17,7 @@ def boxplot(measurements, title=""):
     ax.boxplot(data)
 
     # plt.show()
-    plt.savefig(f"{title}.png")
+    plt.savefig(f"../plots/{title}.png")
 
 
 def boxplot_all(data: dict, title=""):
@@ -37,4 +37,4 @@ def boxplot_all(data: dict, title=""):
     ax.set_xticklabels(data.keys())
 
     # plt.show()
-    plt.savefig(f"{title}.png")
+    plt.savefig(f"../plots/{title}.png")
