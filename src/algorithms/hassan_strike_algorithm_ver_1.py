@@ -1,7 +1,9 @@
 from queue import PriorityQueue
+DayData = (int, int, int)
+AlgResult = (int, [(int, int)])
 
 
-def strike_algorithm(n, m, days, extra_info=False, debug_info=False):
+def strike_algorithm(n: int, m: int, days: [DayData], extra_info=False, debug_info=False) -> AlgResult:
     ordered_days = PriorityQueue(m)
 
     cumulative_cost = 0

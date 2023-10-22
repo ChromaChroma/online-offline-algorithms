@@ -1,5 +1,8 @@
+DayData = (int, int, int)
+AlgResult = (int, [(int, int)])
 
-def strike_algorithm(n: int, m: int, days: [(int, int, int)]) -> (int, [(int, int)]):
+
+def strike_algorithm(n: int, m: int, days: [DayData]) -> AlgResult:
     """
     Greedy online algorithm with ratio
 
