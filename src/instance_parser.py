@@ -6,9 +6,11 @@ def load_instance(instance_file) -> (int, int, (int, int, int)):
         and a list of tuples with information per day: (amount_of_seats, flight_cost, hotel_cost)
     """
     with open(f"../instances/{instance_file}") as f:
-        n = int(f.readline())
-        m = int(f.readline())
+        n = int(f.readline()) # First line is n
+        m = int(f.readline()) # Second line is n
         days = list()
+
+        # Remaining lines are the day data
         for line in f.readlines():
             values = line.split(sep=',')
             seats = int(values[0].strip())

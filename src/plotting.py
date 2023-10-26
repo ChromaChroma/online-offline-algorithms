@@ -1,6 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def lineplot(x, y, title=""):
+    fig = plt.figure(figsize=(10, 4))
+    ax = fig.add_subplot()
+    ax.set_ylabel("Computation time in ns (Smaller = better)")
+    # ax.set_ylabel("Total cost (Smaller = better)")
+    ax.set_title(title)
+    plt.plot(x, y)
+
+    plt.savefig(f"../plots/{title}-computation.png")
 
 def boxplot(measurements, title=""):
     data = np.array(measurements)
