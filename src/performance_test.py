@@ -10,7 +10,7 @@ DayData = (int, int, int)
 AlgResult = (int, [(int, int)])
 
 
-def measure_computation_time(algorithm, instance) -> (float, float, float, AlgResult):
+def measure_computation_time(algorithm, instance, **args) -> (float, float, float, AlgResult):
     time = []
     res = None
 
@@ -20,7 +20,7 @@ def measure_computation_time(algorithm, instance) -> (float, float, float, AlgRe
         start = perf_counter_ns()
 
         # Function to measure
-        res = algorithm(*instance)
+        res = algorithm(*instance, **args)
 
         # end time
         stop = perf_counter_ns()
@@ -41,7 +41,8 @@ def run_test(filename: str):
 
     (o_times, o_avg, o_min, o_max, (o_c, o_p)) = measure_computation_time(offline.strike_algorithm, instance)
     (g_times, g_avg, g_min, g_max, (g_c, g_p)) = measure_computation_time(greedy.strike_algorithm, instance)
-    (gr_times, gr_avg, gr_min, gr_max, (gr_c, gr_p)) = measure_computation_time(greedy_ratio.strike_algorithm, instance)
+    (gr_times, gr_avg, gr_min, gr_max, (gr_c, gr_p)) \
+        = measure_computation_time(greedy_ratio.strike_algorithm, instance, ratio=0.8)
 
     print_res("Offline", o_avg, o_min, o_max)
     print(f"{o_c} using: {o_p}")

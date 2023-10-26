@@ -14,7 +14,7 @@ def strike_algorithm(n: int, m: int, days: [DayData], ratio: float = 1) -> AlgRe
 
     :returns: tuple (total_cost, list of people sent and remaining each day)
     """
-    total_cost, cumulative_cost = 0,0
+    total_cost, cumulative_cost = 0, 0
 
     sent_and_remaining = []
 
