@@ -3,7 +3,44 @@ DayData = (int, int, int)
 AlgResult = (int, [(int, int)])
 
 
-def strike_algorithm(n: int, m: int, days: [DayData], extra_info=False, debug_info=False) -> AlgResult:
+def strike_algorithm(n: int, m: int, days: [DayData]) -> AlgResult:
+    ordered_days = PriorityQueue(m)
+
+    cumulative_cost = 0
+    count = 0
+
+    for (seat, flight_cost, hotel_cost) in days:
+        price = flight_cost + cumulative_cost
+
+        ordered_days.put((price, (count, seat, flight_cost, hotel_cost)))
+
+        cumulative_cost = cumulative_cost + hotel_cost
+        count = count + 1
+
+    travel_log = list(range(0, m))
+    remaining = n
+    while not ordered_days.empty():
+        (price, (day, seat, flight_cost, hotel_cost)) = ordered_days.get();
+        travelers = min(seat, remaining)
+        travel_log[day] = travelers
+        remaining = remaining - travelers
+
+    remaining = n
+    cost_tracker = 0
+    people = []
+    for i in range(0, m):
+        travelers = travel_log[i]
+        (seat, flight_cost, hotel_cost) = days[i]
+        remaining = remaining - travelers
+        cost_tracker += (travelers * flight_cost) + (hotel_cost * remaining)
+        people.append((travelers, remaining))
+
+    return cost_tracker, people
+
+
+
+
+def strike_algorithm_print(n: int, m: int, days: [DayData], extra_info=False, debug_info=False) -> AlgResult:
     ordered_days = PriorityQueue(m)
 
     cumulative_cost = 0
