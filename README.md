@@ -9,3 +9,18 @@ These instance text files are being read and parsed by our [parser](./src/instan
 
 A preview of the general performance of our algorithms can be seen in a sampled plot.
 ![](./plots/all-algs.png)
+
+If you wish to try your own instances, do the following:
+1. Create a text file in the instances directory with your instance in the format :   
+   ```text
+   n  
+   m  
+   s,p,h (comma seperated) 
+   s,p,h 
+   ... 
+   s,p,h (repeat for m rows)  
+   ```
+2. Go to the main script and add:  `run_test("your-instance-filename.txt")`
+3. Run main.py and let the magic do its work
+
+    
